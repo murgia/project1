@@ -21,21 +21,31 @@ var questions = [
 $(".start").click(function(){
   console.log("testing start");
   getQuestion(getRandom(0,2));
-});
-// submit answer event
-$("#answer").click(function(evt){
-  evt.preventDefault();
-  console.log("testing submission");
-  checkAnswer();
-});
-
-$("#nextQuestion").click(function(){
-  console.log("testing next question");
-  getQuestion(getRandom(0,2));
-});
-
-$("#reset").click(function(){
-  console.log("reset test");
+  $("#nextQuestion").click(function(){
+    console.log("testing next question");
+    getQuestion(getRandom(0,2));
+  });
+// add click event to reset button, turn off next question button so you must click start to restart
+  $("#reset").click(function(){
+    console.log("reset test");
+    correctCount = 0;
+    incorrectCount = 0;
+    $("#nextQuestion").off();
+    $("#Message").text("");
+    $("#correct-counter").html("Correct: " + correctCount);
+    $("#incorrect-counter").html("Incorrect: " + incorrectCount);
+    $(".start").html("START");
+    $(".start").click(function(){
+      console.log("testing start");
+      getQuestion(getRandom(0,2));
+    });
+  });
+  // create click event to check answer
+  $("#answer").click(function(evt){
+    evt.preventDefault();
+    console.log("testing submission");
+    checkAnswer();
+  });
 });
 
 // create a random number that will be used for pulling a question
@@ -54,11 +64,13 @@ var getQuestion = function(questionNumber){
 var checkAnswer= function(){
   if($("#answer-field").val() == $(".answer").text()){
     console.log("test correct");
+    $("#Message").text("You are correct!");
     correctCount ++;
-    $("#correct-counter").html(correctCount);
+    $("#correct-counter").html("Correct: " + correctCount);
   } else {
     console.log("test incorrect");
+    $("#Message").text("You answered incorrectly.  Try again or go to another question.");
     incorrectCount ++;
-    $("#incorrect-counter").html(incorrectCount);
+    $("#incorrect-counter").html("Incorrect: " + incorrectCount);
   }
 };

@@ -6,16 +6,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class = "counter-display">
-    <table class = "counter titles">
-      <td id="correct-title">Correct</p>
-      <td id="incorrect-title">Incorrect</p>
-    </table>
-    <table class = "counters">
-      <td id="correct-counter">0</p>
-      <td id="incorrect-counter">0</p>
-    </table>
-  </div>
   <div class = "question-display">
     <h1 class = "start"> START </h1>
     <div class="answer" style="display:none"></div>
@@ -29,6 +19,11 @@
   <div class="buttons">
     <button id="nextQuestion">NEXT QUESTION</button>
     <button id="reset">RESET</button>
+  </div>
+  <div class = "counter-display">
+    <h1 id="Message"></h1>
+    <p id="correct-counter">Correct: 0</p>
+    <p id="incorrect-counter">Incorrect: 0</p>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
