@@ -1,7 +1,22 @@
 // Declare variables for correct and incorrect count
 var correctCount = 0;
 var incorrectCount = 0;
+var questionNumber = 0;
 
+var questions = [
+  question1 = {
+    question: "question1?",
+    answer: "answer1"
+  },
+  question2 = {
+    question: "question2?",
+    answer: "answer2"
+  },
+  question3 = {
+    question: "question3?",
+    answer: "answer3"
+  },
+];
 // add click events to start, submit, next question, and reset
 $(".start").click(function(){
   console.log("testing start");
@@ -11,6 +26,7 @@ $(".start").click(function(){
 $("#answer").click(function(evt){
   evt.preventDefault();
   console.log("testing submission");
+  checkAnswer();
 });
 
 $("#nextQuestion").click(function(){
@@ -25,8 +41,17 @@ $("#reset").click(function(){
 var getRandom = function(min,max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-// create start function that changes
+// create start function that moves to a random question ID and turns off start click event
 var start = function(){
-  $(".start").html($("#" + getRandom(1,3)));
+  $(".start").text(questions[questionNumber].question);
   $(".start").off();
+};
+
+
+// create a check answer function that checks if the answer is correct
+var checkAnswer= function(){
+  if($("#answer-field").val() === questions[questionNumber].answer){
+    console.log("test correct");
+  } else {
+    console.log("test incorrect");}
 };
