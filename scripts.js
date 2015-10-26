@@ -24,6 +24,10 @@ $(".start").click(function(){
   $("#nextQuestion").click(function(){
     console.log("testing next question");
     getQuestion(getRandom(0,2));
+    $(".answer").css("display", "none");
+    $("#Message").text("");
+    $("#Message").text("");
+    $("#answer-field").val("");
   });
 // add click event to reset button, turn off next question button so you must click start to restart
   $("#reset").click(function(){
@@ -62,14 +66,15 @@ var getQuestion = function(questionNumber){
 
 // create a check answer function that checks if the answer is correct
 var checkAnswer= function(){
-  if($("#answer-field").val() == $(".answer").text()){
+  if($("#answer-field").val().toLowerCase() == $(".answer").text()){
     console.log("test correct");
-    $("#Message").text("You are correct!");
+    $("#Message").text("You are correct! Press 'NEXT QUESTION' to move on.");
     correctCount ++;
     $("#correct-counter").html("Correct: " + correctCount);
   } else {
     console.log("test incorrect");
-    $("#Message").text("You answered incorrectly.  Try again or go to another question.");
+    $("#Message").text("You answered incorrectly.  Try again or click 'NEXT QUESTION' to move on.");
+    $(".answer").css("display", "inline");
     incorrectCount ++;
     $("#incorrect-counter").html("Incorrect: " + incorrectCount);
   }
