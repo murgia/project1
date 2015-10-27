@@ -1,31 +1,36 @@
-// Declare variables for correct and incorrect count
+// Declare variables
 var correctCount = 0;
 var incorrectCount = 0;
 
-var questions = [
-  {
-    question: "question1?",
-    answer: "answer1"
-  },
-  {
-    question: "question2?",
-    answer: "answer2"
-  },
-  {
-    question: "question3?",
-    answer: "answer3"
-  },
-];
+// add click events to trivia types
+$("#general").click(function(){
+  console.log("testing");
+  $("body").removeClass().addClass("general");
+  $("#type").html("General");
+  $(".trivselect").html("general");
+});
 
+$("#sports").click(function(){
+  console.log("testing");
+  $("body").removeClass().addClass("sports");
+  $("#type").html("Sports");
+  $(".trivselect").html("sports");
+});
+
+$("#geography").click(function(){
+  console.log("testing");
+  $("body").removeClass().addClass("geography");
+  $("#type").html("Geography");
+  $(".trivselect").html("geography");
+});
 // add click events to start, submit, next question, and reset
 $(".start").click(function(){
   console.log("testing start");
-  getQuestion(getRandom(0,2));
+  getQuestion(getRandom(0,20));
   $("#nextQuestion").click(function(){
     console.log("testing next question");
-    getQuestion(getRandom(0,2));
+    getQuestion(getRandom(0,20));
     $(".answer").css("display", "none");
-    $("#Message").text("");
     $("#Message").text("");
     $("#answer-field").val("");
   });
@@ -34,14 +39,15 @@ $(".start").click(function(){
     console.log("reset test");
     correctCount = 0;
     incorrectCount = 0;
+    $("#answer-field").val("");
     $("#nextQuestion").off();
     $("#Message").text("");
     $("#correct-counter").html("Correct: " + correctCount);
     $("#incorrect-counter").html("Incorrect: " + incorrectCount);
-    $(".start").html("START");
+    $(".start").html("CLICK TO START");
     $(".start").click(function(){
       console.log("testing start");
-      getQuestion(getRandom(0,2));
+      getQuestion(getRandom(0,20));
     });
   });
   // create click event to check answer
@@ -49,6 +55,13 @@ $(".start").click(function(){
     evt.preventDefault();
     console.log("testing submission");
     checkAnswer();
+    $("#nextQuestion").click(function(){
+      console.log("testing next question");
+      getQuestion(getRandom(0,20));
+      $(".answer").css("display", "none");
+      $("#Message").text("");
+      $("#answer-field").val("");
+    });
   });
 });
 
@@ -58,9 +71,19 @@ var getRandom = function(min,max){
 };
 // create start function that moves to a random question ID and turns off start click event
 var getQuestion = function(questionNumber){
-  $(".start").text(questions[questionNumber].question);
-  $(".answer").text(questions[questionNumber].answer);
-  $(".start").off();
+  if($(".trivselect").html() == "general"){
+    $(".start").text(generalQuestions[questionNumber].question);
+    $(".answer").text(generalQuestions[questionNumber].answer);
+    $(".start").off();
+  } else if ($(".trivselect").html() == "sports"){
+    $(".start").text(sportsQuestions[questionNumber].question);
+    $(".answer").text(sportsQuestions[questionNumber].answer);
+    $(".start").off();
+  } else if ($(".trivselect").html() == "geography"){
+    $(".start").text(geographyQuestions[questionNumber].question);
+    $(".answer").text(geographyQuestions[questionNumber].answer);
+    $(".start").off();
+  }
 };
 
 

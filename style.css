@@ -1,3 +1,66 @@
-body{
+html{
+	background-image: url(https://images.unsplash.com/photo-1444090542259-0af8fa96557e?q=80&fm=jpg&w=1080&fit=max&s=4b703b77b42e067f949d14581f35019b);
+	background-size: cover;
+}
+
+body.general {
+	font-family: fantasy;
+	margin: 0 auto;
+	width: 600px;
+	background-color: #2A537A;
+  color: #F4FFE0;
+	min-height: 600px;
   text-align: center;
+	box-shadow: 5px 6px 6px 0px black;
+}
+.trivtypes{
+  list-style-type: none;
+  padding:0;
+  margin:0;
+}
+.trivtypes li {
+  display: inline;
+  border: 4px groove white;
+  padding: 2px;
+  margin-right: 4px;
+}
+.counters {
+  list-style-type: none;
+  padding: 0px;
+  margin top:10;
+}
+.counters li{
+	display: inline;
+  border: 4px groove white;
+  padding: 2px;
+  margin-right: 4px;
+}
+.question-display{
+	height: 150px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+.buttons{
+	margin-top: 10px;
+}
+body.sports{
+	font-family: monospace;
+	margin: 0 auto;
+	width: 600px;
+	background-color: #D7CAA6;
+	color: #608325;
+	min-height: 600px;
+	text-align: center;
+	box-shadow: 5px 6px 6px 0px black;
+}
+body.geography{
+	font-family: "Century Gothic";
+	margin: 0 auto;
+	width: 600px;
+	background-color: #2E5677;
+	color: #B86440;
+	min-height: 600px;
+	text-align: center;
+	box-shadow: 5px 6px 6px 0px black;
 }

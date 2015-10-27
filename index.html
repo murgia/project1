@@ -5,31 +5,45 @@
   <title>Trivia</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="general">
   <header>
     <h1>Welcome to Trivia!</h1>
+    <div class="trivselect" style="display:none">general</div>
+    <p>Please select whichever trivia you would like to play.</p>
+    <p id="type"> General </p>
+    <ul class="trivtypes">
+      <li id="general">General</li>
+      <li id="sports">Sports</li>
+      <li id="geography">Geography</li>
+    </ul>
   </header>
-  <div class = "question-display">
-    <h1 class = "start"> START </h1>
-    <div class="answer" style="display:none"></div>
-  </div>
-  <div class = "submission">
-    <form id="form">
-      <input type="text" id="answer-field"></input>
-      <button id="answer">Submit</button>
-    </form>
-  </div>
-  <div class="buttons">
-    <button id="nextQuestion">NEXT QUESTION</button>
-    <button id="reset">RESET</button>
-  </div>
-  <div class = "counter-display">
-    <h1 id="Message"></h1>
-    <p id="correct-counter">Correct: 0</p>
-    <p id="incorrect-counter">Incorrect: 0</p>
-  </div>
-
+  <Main>
+    <div class = "question-display">
+      <h1 class = "start"> CLICK TO START </h1>
+      <div class="answer" style="display:none"></div>
+    </div>
+    <div class = "submission">
+  </main>
+  <footer>
+      <form id="form">
+        <input type="text" id="answer-field"></input>
+        <button id="answer">Submit</button>
+      </form>
+    </div>
+    <div class="buttons">
+      <button id="nextQuestion">NEXT QUESTION</button>
+      <button id="reset">RESET</button>
+    </div>
+    <div class = "counter-display">
+      <ul class="counters">
+        <li id="correct-counter">Correct: 0</li>
+        <li id="incorrect-counter">Incorrect:         0</li>
+      </ul>
+      <h1 id="Message"></h1>
+    </div>
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="scripts.js"></script>
+  <script src="questions.js"></script>
 </body>
 </html>
