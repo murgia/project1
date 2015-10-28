@@ -239,16 +239,16 @@ var geographyQuestions = [
   },
   {
     question: "What is the name of the sea that lies between Israel and Jordan?",
-    answer: "the dead sea",
+    answer: "dead sea",
     status: false
   },
   {
-    question: "What occured first, the Stone Age or the Bronze Age?",
+    question: "What occured first, 'the Stone Age' or 'the Bronze Age'?",
     answer: "the stone age",
     status: false
   },
   {
-    question: "Which is warmer, the North Pole or the South Pole?",
+    question: "Which is warmer, 'the North Pole' or the 'South Pole'?",
     answer: "the north pole",
     status: false
   },
@@ -263,8 +263,8 @@ var geographyQuestions = [
     status: false
   },
   {
-    question: "What event is measured by the Richter scale?",
-    answer: "earthquake",
+    question: "What events are measured by the Richter scale?",
+    answer: "earthquakes",
     status: false
   },
   {
