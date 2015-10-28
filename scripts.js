@@ -40,6 +40,15 @@ var activateReset = function(){
     console.log("reset test");
     correctCount = 0;
     incorrectCount = 0;
+    while(genQuestionAnswers.length>0){
+    generalQuestions.push(genQuestionAnswers.pop());
+  }
+    while(sportsQuestionAnswers.length>0){
+    sportsQuestions.push(sportsQuestionAnswers.pop());
+  }
+    while(geoQuestionAnswers.length>0){
+    geographyQuestions.push(geoQuestionAnswers.pop());
+  }
     $("#answer-field").val("");
     $("#nextQuestion").off();
     $("#Message").text("");
@@ -50,6 +59,7 @@ var activateReset = function(){
       console.log("testing start");
       questionSelection();
     });
+    activateNextQuestion();
   });
 };
 // create a click event to active the submit button
@@ -125,18 +135,18 @@ var getQuestion = function(questionNumber){
     $(".start").text(generalQuestions[questionNumber].question);
     $(".answer").text(generalQuestions[questionNumber].answer);
     $(".start").off();
-    genQuestionAnswers.push(generalQuestions.splice(questionNumber, 1));
+    genQuestionAnswers.push(generalQuestions.splice(questionNumber, 1)[0]);
   } else if ($(".trivselect").html() == "sports"){
       $(".start").text(sportsQuestions[questionNumber].question);
       $(".answer").text(sportsQuestions[questionNumber].answer);
       $(".start").off();
-      sportsQuestionAnswers.push(sportsQuestions.splice(questionNumber, 1));
+      sportsQuestionAnswers.push(sportsQuestions.splice(questionNumber, 1)[0]);
     }
       else if ($(".trivselect").html() == "geography"){
         $(".start").text(geographyQuestions[questionNumber].question);
         $(".answer").text(geographyQuestions[questionNumber].answer);
         $(".start").off();
-        geoQuestionAnswers.push(geographyQuestions.splice(questionNumber, 1));
+        geoQuestionAnswers.push(geographyQuestions.splice(questionNumber, 1)[0]);
       }
 };
 
