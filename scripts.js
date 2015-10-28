@@ -2,50 +2,18 @@
 var correctCount = 0;
 var incorrectCount = 0;
 
-// add click events to select trivia types
-$("#general").click(function(){
-  console.log("testing");
-  $("body").removeClass().addClass("general");
-  $("#type").html("General");
-  $(".trivselect").html("general");
-  getQuestion(getRandom(0,20));
-});
-
-$("#sports").click(function(){
-  console.log("testing");
-  $("body").removeClass().addClass("sports");
-  $("#type").html("Sports");
-  $(".trivselect").html("sports");
-  getQuestion(getRandom(0,20));
-});
-
-$("#geography").click(function(){
-  console.log("testing");
-  $("body").removeClass().addClass("geography");
-  $("#type").html("Geography");
-  $(".trivselect").html("geography");
-  getQuestion(getRandom(0,20));
-});
-// add click events to start, submit, next question, and reset
-$(".start").click(function(){
-  console.log("testing start");
-  getQuestion(getRandom(0,20));
-
-  // once start is clicked, add click event to next question
-
-  var activateNextQuestion = function() {
-    $("#nextQuestion").click(function(){
-      console.log("testing next question");
-      getQuestion(getRandom(0,20));
-      $(".answer").css("display", "none");
-      $("#Message").text("");
-      $("#answer-field").val("");
+// create click event to activate next question
+var activateNextQuestion = function() {
+  $("#nextQuestion").click(function(){
+    console.log("testing next question");
+    getQuestion(getRandom(0,20));
+    $(".answer").css("display", "none");
+    $("#Message").text("");
+    $("#answer-field").val("");
   });
 };
-activateNextQuestion();
-
-// add click event to reset button, turn off next question button so you must click start to restart
-
+// create click event to activate reset button
+var activateReset = function(){
   $("#reset").click(function(){
     console.log("reset test");
     correctCount = 0;
@@ -61,13 +29,67 @@ activateNextQuestion();
       getQuestion(getRandom(0,20));
     });
   });
-  // create click event to check answer
+};
+// create a click event to active the submit button
+var activateSubmit = function(){
   $("#answer").click(function(evt){
     evt.preventDefault();
     console.log("testing submission");
     checkAnswer();
-    activateNextQuestion();
   });
+};
+// add click events to each type of start button
+$("#general").click(function(){
+  console.log("testing");
+  $("body").removeClass().addClass("general");
+  $("#type").html("General");
+  $(".trivselect").html("general");
+  $(".start").html("CLICK TO START");
+  $("#Message").text("");
+  $(".answer").css("display", "none");
+  $("#answer-field").val("");
+  $(".start").click(function(){
+    console.log("testing start");
+    getQuestion(getRandom(0,20));
+  });
+});
+
+$("#sports").click(function(){
+  console.log("testing");
+  $("body").removeClass().addClass("sports");
+  $("#type").html("Sports");
+  $(".trivselect").html("sports");
+  $(".start").html("CLICK TO START");
+  $("#Message").text("");
+  $(".answer").css("display", "none");
+  $("#answer-field").val("");
+  $(".start").click(function(){
+    console.log("testing start");
+    getQuestion(getRandom(0,20));
+  });
+});
+
+$("#geography").click(function(){
+  console.log("testing");
+  $("body").removeClass().addClass("geography");
+  $("#type").html("Geography");
+  $(".trivselect").html("geography");
+  $(".start").html("CLICK TO START");
+  $("#Message").text("");
+  $(".answer").css("display", "none");
+  $("#answer-field").val("");
+  $(".start").click(function(){
+    console.log("testing start");
+    getQuestion(getRandom(0,20));
+  });
+});
+
+$(".start").click(function(){
+  console.log("testing start");
+  getQuestion(getRandom(0,20));
+  activateNextQuestion();
+  activateReset();
+  activateSubmit();
 });
 
 // create a random number that will be used for pulling a question
@@ -75,8 +97,7 @@ var getRandom = function(min,max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-// create start function that moves to a random question ID and turns off start click event
-
+// create get question function that gets function based on which type of trivia is active
 var getQuestion = function(questionNumber){
   if($(".trivselect").html() == "general"){
     $(".start").text(generalQuestions[questionNumber].question);
@@ -100,14 +121,14 @@ var checkAnswer= function(){
   if($("#answer-field").val().toLowerCase() == $(".answer").text()){
     console.log("test correct");
     $("#Message").text("You are correct! Press 'NEXT QUESTION' to move on.");
-    correctCount ++;
+    correctCount +=1;
     $("#correct-counter").html("Correct: " + correctCount);
   }
     else {
       console.log("test incorrect");
       $("#Message").text("You answered incorrectly.  Try again or click 'NEXT QUESTION' to move on.");
       $(".answer").css("display", "inline");
-      incorrectCount ++;
+      incorrectCount +=1;
       $("#incorrect-counter").html("Incorrect: " + incorrectCount);
     }
 };
