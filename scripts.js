@@ -1,12 +1,34 @@
 // Declare variables
 var correctCount = 0;
 var incorrectCount = 0;
+var genQuestionAnswers = [];
+var sportsQuestionAnswers = [];
+var geoQuestionAnswers = [];
+
+var questionSelection = function(){
+  if ($(".trivselect").html() == "general"){
+    getQuestion(getRandom(0,generalQuestions.length-1));
+    if(generalQuestions.length === 0){
+      $(".start").html("I am sorry but you have run out of questions.  Please click on another deck or reset the game.");
+    }
+  } else if ($(".trivselect").html() == "sports"){
+    getQuestion(getRandom(0,sportsQuestions.length-1));
+    if(sportsQuestions.length === 0){
+      $(".start").html("I am sorry but you have run out of questions.  Please click on another deck or reset the game.");
+    }
+  } else if ($(".trivselect").html() == "geography"){
+    getQuestion(getRandom(0,geographyQuestions.length-1));
+    if(geographyQuestions.length === 0){
+      $(".start").html("I am sorry but you have run out of questions.  Please click on another deck or reset the game.");
+    }
+  }
+};
 
 // create click event to activate next question
 var activateNextQuestion = function() {
   $("#nextQuestion").click(function(){
     console.log("testing next question");
-    getQuestion(getRandom(0,20));
+    questionSelection();
     $(".answer").css("display", "none");
     $("#Message").text("");
     $("#answer-field").val("");
@@ -26,7 +48,7 @@ var activateReset = function(){
     $(".start").html("CLICK TO START");
     $(".start").click(function(){
       console.log("testing start");
-      getQuestion(getRandom(0,20));
+      questionSelection();
     });
   });
 };
@@ -50,7 +72,7 @@ $("#general").click(function(){
   $("#answer-field").val("");
   $(".start").click(function(){
     console.log("testing start");
-    getQuestion(getRandom(0,20));
+    questionSelection();
   });
 });
 
@@ -65,7 +87,7 @@ $("#sports").click(function(){
   $("#answer-field").val("");
   $(".start").click(function(){
     console.log("testing start");
-    getQuestion(getRandom(0,20));
+    questionSelection();
   });
 });
 
@@ -80,13 +102,13 @@ $("#geography").click(function(){
   $("#answer-field").val("");
   $(".start").click(function(){
     console.log("testing start");
-    getQuestion(getRandom(0,20));
+    questionSelection();
   });
 });
 
 $(".start").click(function(){
   console.log("testing start");
-  getQuestion(getRandom(0,20));
+  questionSelection();
   activateNextQuestion();
   activateReset();
   activateSubmit();
@@ -103,15 +125,18 @@ var getQuestion = function(questionNumber){
     $(".start").text(generalQuestions[questionNumber].question);
     $(".answer").text(generalQuestions[questionNumber].answer);
     $(".start").off();
+    genQuestionAnswers.push(generalQuestions.splice(questionNumber, 1));
   } else if ($(".trivselect").html() == "sports"){
       $(".start").text(sportsQuestions[questionNumber].question);
       $(".answer").text(sportsQuestions[questionNumber].answer);
       $(".start").off();
+      sportsQuestionAnswers.push(sportsQuestions.splice(questionNumber, 1));
     }
       else if ($(".trivselect").html() == "geography"){
         $(".start").text(geographyQuestions[questionNumber].question);
         $(".answer").text(geographyQuestions[questionNumber].answer);
         $(".start").off();
+        geoQuestionAnswers.push(geographyQuestions.splice(questionNumber, 1));
       }
 };
 
