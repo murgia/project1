@@ -17,7 +17,7 @@ var generalQuestions = [
   },
   {
     question: "In what city is Notre Dame cathedral?",
-    answer: "Paris"
+    answer: "paris"
   },
   {
     question: "Approximately how many minutes does is take for light from the sun to reach earth (please type out number)",
