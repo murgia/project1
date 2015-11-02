@@ -40,6 +40,7 @@ var activateReset = function(){
     console.log("reset test");
     correctCount = 0;
     incorrectCount = 0;
+    // i like this use of the loop to reset the game very creative. Another approach might be to never manipulate the original pool of questions, in that way you won't have to loop. Looping could become expensive especially if this application grows and you need to nest functionliaty inside of the loop
     while(genQuestionAnswers.length>0){
     generalQuestions.push(genQuestionAnswers.pop());
   }
@@ -71,6 +72,7 @@ var activateSubmit = function(){
   });
 };
 // add click events to each type of start button
+// seems like theres alot of code being repeated over the next 45 lines or so. Great refactor opportunity!
 $("#general").click(function(){
   console.log("testing");
   $("body").removeClass().addClass("general");
@@ -132,6 +134,7 @@ var getRandom = function(min,max){
 // create get question function that gets function based on which type of trivia is active
 var getQuestion = function(questionNumber){
   if($(".trivselect").html() == "general"){
+    // Seems to be a lot of duplicated code over the next 15 lines, great opprtunity to refactor. Maybe we could abstract a functionality called displayQuestion(generalQuestions[questionNumber]) or something.
     $(".start").text(generalQuestions[questionNumber].question);
     $(".answer").text(generalQuestions[questionNumber].answer);
     $(".start").off();
@@ -141,6 +144,7 @@ var getQuestion = function(questionNumber){
       $(".answer").text(sportsQuestions[questionNumber].answer);
       $(".start").off();
       sportsQuestionAnswers.push(sportsQuestions.splice(questionNumber, 1)[0]);
+      // make sure to properly indent your code.
     }
       else if ($(".trivselect").html() == "geography"){
         $(".start").text(geographyQuestions[questionNumber].question);
