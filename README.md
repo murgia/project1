@@ -1,6 +1,7 @@
 # project1: Trivia
 
 5 User Stories:
+// try adding a role to each user story. Going forward you may be doing the same thing to two different roles. Other than that, looks great.
 1.  Create a submit area that will test if the trivia question is answered correctly.
 2.  Create an area that accurately keeps track of the number of questions answered correctly.
 3. Create an area that accurately keeps track of the number of questions answered incorrectly.
@@ -21,3 +22,5 @@ Please type your answers in the input area and make sure they are spelled correc
 THINGS TO WORK ON:
 
 Ideally there would be a lot more questions in the decks as well as categories to choose from.  I would also like to add some functionality where the answers did not have to be the exact spelling.  There are some answers where a plural would be valid or adding a the would be grammatically correct but the answer will only accept what is typed in the object letter for letter.  I would also like to add a feature that is a sort of timer or counter where it can evaluate what level you have reached.
+
+// yeah you could code different levels of leniency. I would recommend using something like regular expressions.

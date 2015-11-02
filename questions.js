@@ -2,6 +2,7 @@ var generalQuestions = [
   {
     question: "In what country does the Suez Canal reside?",
     answer: "egypt",
+    // was wondering why you had a key value pair for status? Doesn't appear to be used in the script.js file, i love that you are using an object to represent each question and answer. You can see the advantages it brings adding properties like status and whatever else you want moving forward in your application.
     status: false
   },
   {
@@ -100,6 +101,13 @@ var generalQuestions = [
   },
 ];
 var sportsQuestions = [
+  // I noticed you made 3 variables all representing an array of question and answer pairs. The fact that they've been separated by variable means there might be an oppunity to refactor. We could just make another key value pair for our questions like, questionType or category. something like
+  // {
+  //   question: "Who was the only heavyweight champion to finish his boxing career with a perfect record (49-0)",
+  //   answer: "rocky marciano",
+  //   category: "sports"
+  // }
+  // In this way our code becomes more modular. I don't have to instantiate a new global variable to create different categories.
   {
     question: "Who was the only heavyweight champion to finish his boxing career with a perfect record (49-0)",
     answer: "rocky marciano",
